@@ -1,0 +1,8 @@
+---
+title: "Zootecnia de Precisão"
+subtitle: "UFAL - Campus CECA, Rio Largo"
+---
+
+## Bem-vindo(a)
+
+Página da disciplina Zootecnia de Precisão. Use o menu acima para acessar a ementa, o cronograma, os materiais de aula, as avaliações e as referências.

@@ -1,0 +1,29 @@
+project:
+  type: website
+
+# engine jupyter: necessário para renderizar os blocos ```{python}```
+engine: jupyter
+
+website:
+  title: "Zootecnia de Precisão"
+  description: "UFAL - Campus CECA, Rio Largo"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Início
+      - href: ementa.qmd
+        text: Ementa
+      - href: cronograma.qmd
+        text: Cronograma
+      - href: materiais.qmd
+        text: Materiais
+      - href: avaliacoes.qmd
+        text: Avaliações
+      - href: referencias.qmd
+        text: Referências
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true

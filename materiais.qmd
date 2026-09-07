@@ -1,0 +1,22 @@
+---
+title: "Materiais e Aulas"
+---
+
+## Aula 1
+
+<!-- Slides, links, exemplos de código com dados e gráficos -->
+
+```{python}
+# Exemplo: bloco de código executável
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# dados de exemplo
+df = pd.DataFrame({"dia": [1, 2, 3, 4, 5], "peso_kg": [30, 31, 33, 34, 36]})
+
+plt.plot(df["dia"], df["peso_kg"], marker="o")
+plt.xlabel("Dia")
+plt.ylabel("Peso (kg)")
+plt.title("Ganho de peso - exemplo")
+plt.show()
+```
