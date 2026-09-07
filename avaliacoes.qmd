@@ -1,5 +1,0 @@
----
-title: "Avaliações"
----
-
-<!-- Datas, pesos e formato das avaliações -->

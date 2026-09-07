@@ -1,7 +1,11 @@
 project:
   type: website
+  render:
+    - "*.qmd"
+    - "aulas/**/*.qmd"
 
-# engine jupyter: necessário para renderizar os blocos ```{python}```
+# engine jupyter: necessário porque a disciplina usa blocos ```{python}```
+# (dados e gráficos)
 engine: jupyter
 
 website:
@@ -9,21 +13,29 @@ website:
   description: "UFAL - Campus CECA, Rio Largo"
   navbar:
     left:
+      # links âncora para as seções da página única (index.qmd)
       - href: index.qmd
         text: Início
-      - href: ementa.qmd
+      - href: index.qmd#aulas
+        text: Aulas
+      - href: index.qmd#ementa
         text: Ementa
-      - href: cronograma.qmd
+      - href: index.qmd#cronograma
         text: Cronograma
-      - href: materiais.qmd
-        text: Materiais
-      - href: avaliacoes.qmd
-        text: Avaliações
-      - href: referencias.qmd
-        text: Referências
+      - href: index.qmd#avaliacao
+        text: Avaliação
+      - href: index.qmd#bibliografia
+        text: Bibliografia
+    right:
+      - icon: github
+        href: "https://github.com/profdavybaia/zotecnia-de-precisao"
+        text: Repositório
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: flatly # tema claro
+      dark: darkly # tema escuro — a navbar ganha um botão de alternância automática
     css: styles.css
-    toc: true
+    toc: false
+    page-layout: full

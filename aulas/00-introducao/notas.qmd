@@ -1,0 +1,11 @@
+---
+title: "Notas — Aula 00"
+---
+
+Texto de referência da aula, em formato normal de página (com a navbar do
+site). Use aqui o conteúdo mais detalhado, equivalente ao que os slides
+resumem visualmente.
+
+## Introdução
+
+Explicação detalhada do que é Zootecnia de Precisão e por que ela importa.

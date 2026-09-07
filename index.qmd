@@ -3,6 +3,66 @@ title: "Zootecnia de Precisão"
 subtitle: "UFAL - Campus CECA, Rio Largo"
 ---
 
-## Bem-vindo(a)
+:::{.content}
 
-Página da disciplina Zootecnia de Precisão. Use o menu acima para acessar a ementa, o cronograma, os materiais de aula, as avaliações e as referências.
+*Uso de dados, sensores e modelos quantitativos para monitorar e otimizar a
+produção animal.*
+
+Parágrafo curto descrevendo o propósito da disciplina e o que o aluno será
+capaz de fazer ao final.
+
+## Aulas {#aulas}
+
+Cada aula tem *slides* (apresentação em HTML — tecla `P` entra em modo
+apresentação, `←`/`→` navegam) e *notas* (texto de referência).
+
+:::{.aula-card}
+<div class="numero">00</div>
+<div>
+<strong>Introdução à Zootecnia de Precisão</strong>
+
+Conceitos iniciais, exemplo de análise de dados de ganho de peso.
+
+<span class="links">[Slides](aulas/00-introducao/aula.html) ·
+[Notas](aulas/00-introducao/notas.qmd)</span>
+</div>
+:::
+
+<!-- Duplique o bloco ":::{.aula-card} ... :::" acima para cada nova aula -->
+
+## Ementa {#ementa}
+
+<!-- Liste aqui os tópicos oficiais da ementa -->
+
+1. Tópico 1
+2. Tópico 2
+3. Tópico 3
+
+## Cronograma {#cronograma}
+
+| Semana | Data | Tema |
+|:------:|------|------|
+| 1      |      |      |
+| 2      |      |      |
+
+## Avaliação {#avaliacao}
+
+<!-- Critérios, instrumentos e pesos -->
+
+## Bibliografia {#bibliografia}
+
+**Básica**
+
+<!-- Referências principais -->
+
+**Complementar**
+
+<!-- Referências de apoio -->
+
+## Docente {#docente}
+
+**Prof. Davy Baia** — UFAL, Campus CECA (Rio Largo).
+
+Dúvidas: [davybaia@gmail.com](mailto:davybaia@gmail.com)
+
+:::

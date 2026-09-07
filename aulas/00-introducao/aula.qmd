@@ -1,0 +1,36 @@
+---
+title: "Aula 00 — Introdução à Zootecnia de Precisão"
+# format revealjs sobrescreve o formato do site (html) só para esta página:
+# ela renderiza como apresentação de slides, sem a navbar do site.
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    transition: fade
+    css: ../../styles-slides.css
+---
+
+## O que é Zootecnia de Precisão
+
+- Uso de sensores, dados e modelos para monitorar animais individualmente
+- Decisões orientadas por dados em vez de manejo em lote
+- Exemplos: brincos eletrônicos, balanças automáticas, câmeras, sensores de atividade
+
+## Exemplo: ganho de peso ao longo do tempo
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame({"dia": [1, 2, 3, 4, 5], "peso_kg": [30, 31, 33, 34, 36]})
+
+plt.plot(df["dia"], df["peso_kg"], marker="o")
+plt.xlabel("Dia")
+plt.ylabel("Peso (kg)")
+plt.title("Ganho de peso - exemplo")
+plt.show()
+```
+
+## Obrigado
+
+Dúvidas? [davybaia@gmail.com](mailto:davybaia@gmail.com)
