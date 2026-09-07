@@ -17,7 +17,7 @@ sai lixo).
 
 Uma forma útil de organizar os tipos de dados é pensar no animal como um
 sistema que recebe energia (via alimento) e a distribui entre diferentes
-finalidades — manutenção basal, atividade, termorregulação, estado
+finalidades como manutenção basal, atividade, termorregulação, estado
 mental/bem-estar e produção:
 
 $$E_{tot} = E_{manutenção} + E_{atividade} + E_{térmico} + E_{mental} + E_{produção}$$

@@ -1,3 +1,17 @@
+/* Cor desta disciplina (Zootecnia de Precisão).
+   Em cada site de curso, mude só --cor-disciplina. */
+   :root {
+    --cor-disciplina: #1b448b;
+  }
+  
+  .navbar {
+    background-color: var(--cor-disciplina) !important;
+  }
+  
+  [data-bs-theme="dark"] .navbar {
+    background-color: color-mix(in srgb, var(--cor-disciplina) 75%, black) !important;
+  }
+
 /* Rolagem suave ao clicar nos links do menu (âncoras #aulas, #ementa...) */
 html {
   scroll-behavior: smooth;
