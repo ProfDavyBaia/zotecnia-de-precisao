@@ -1,0 +1,155 @@
+---
+title: "Aula 01 — Coleta e Administração de Dados na Produção Animal"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    transition: fade
+    css: ../../styles-slides.css
+---
+
+## O ponto de partida de tudo
+
+Antes de sensores, identificação eletrônica ou modelos preditivos, existe
+uma etapa que sustenta todas as outras: **coletar e organizar dados** de
+forma confiável.
+
+::: {.attribution}
+"Garbage in, garbage out" — um dado mal coletado compromete qualquer
+análise feita depois dele.
+:::
+
+## Um modelo mental: para onde vai a energia?
+
+O animal recebe energia pelo alimento e a distribui em cinco "gastos" —
+um jeito útil de pensar em *o que* vale a pena medir:
+
+$$E_{tot} = E_{manutenção} + E_{atividade} + E_{térmico} + E_{mental} + E_{produção}$$
+
+::: {.attribution}
+Adaptado de: Berckmans, D. (2022). *Why Precision Livestock Farming will
+create a more sustainable livestock sector.* 4th International
+Huvepharma Seminar, Penang, Malásia.
+:::
+
+## Que tipos de dados coletamos?
+
+A relação com a equação não é 1 termo → 1 tipo de dado: alguns dados
+informam mais de um termo, e um deles nem mede energia diretamente.
+
+::: {.font-menor}
+- **Produção e reprodução** → mede o termo *produção* diretamente: peso,
+  ganho de peso, leite, ovos, prenhez, partos
+- **Saúde e bem-estar** → informa *manutenção* **e** *mental*: temperatura
+  corporal, frequência cardíaca, doenças, escore corporal
+- **Comportamento e atividade** → mede o termo *atividade* diretamente:
+  passos, tempo deitado/em pé, interação social
+- **Ambiente** → não mede energia, é a **causa** do gasto *térmico*:
+  temperatura e umidade do galpão, qualidade do ar
+:::
+
+::: {.font-menor}
+- **Produção/reprodução**: peso, ganho de peso, produção de leite/ovos,
+  taxa de prenhez, intervalo entre partos
+- **Saúde e bem-estar**: temperatura corporal, frequência cardíaca,
+  ocorrências clínicas, escore de condição corporal
+- **Comportamento e atividade**: tempo de ruminação, passos, tempo
+  deitado/em pé, interações sociais
+- **Ambiente**: temperatura e umidade do galpão/estábulo, qualidade do ar,
+  luminosidade
+:::
+
+## Como coletamos: manual x automatizado
+
+:::: {.columns}
+
+::: {.column .font-menor width="50%"}
+**Coleta manual**
+
+- Fichas de campo, planilhas, cadernetas de manejo
+- Baixo custo inicial
+- Sujeita a erro humano e baixa frequência (ex: pesagem semanal)
+:::
+
+::: {.column .font-menor width="50%"}
+**Coleta automatizada**
+
+- Sensores, balanças automáticas, leitores RFID
+- Custo inicial maior, mas contínua, objetiva e de alta frequência
+- Reduz erro humano, mas exige manutenção e calibração
+:::
+
+::::
+
+## Estruturar antes de analisar
+
+Um dado bem coletado ainda pode virar um problema se for mal organizado.
+Princípio central: **cada linha é uma observação, cada coluna é uma
+variável**.
+
+::: {.font-menor}
+- Identificação do animal (ID único, sem ambiguidade)
+- Data e hora da observação
+- Variável medida e sua unidade (ex: peso_kg, não só "peso")
+- Uma variável por coluna — nunca duas informações numa mesma célula
+:::
+
+## Exemplo: planilha bem x mal estruturada
+
+:::: {.columns}
+
+::: {.column .font-menor width="50%"}
+**Mal estruturada**
+
+| Animal | Obs (10/03 e 15/03) |
+|--------|----------------------|
+| 12     | 30kg; depois 33kg     |
+| 7      | 28 kg / febre         |
+:::
+
+::: {.column .font-menor width="50%"}
+**Bem estruturada**
+
+| id_animal | data | variavel | valor | unidade |
+|-----------|------|----------|-------|---------|
+| 12 | 2024-03-10 | peso | 30 | kg |
+| 12 | 2024-03-15 | peso | 33 | kg |
+| 7  | 2024-03-10 | peso | 28 | kg |
+| 7  | 2024-03-10 | febre | 1 | booleano |
+:::
+
+::::
+
+## Problemas comuns na coleta
+
+::: {.font-menor}
+- **Dados faltantes**: animal não pesado num dia, sensor sem sinal
+- **IDs duplicados ou inconsistentes**: o mesmo animal com dois códigos
+  diferentes ao longo do tempo
+- **Unidades misturadas**: kg em uma planilha, g em outra
+- **Erros de digitação**: peso de 300 kg em vez de 30,0 kg
+- **Drift de sensores**: um sensor descalibrado com o tempo, gerando
+  viés sistemático
+- **Atraso no registro**: anotar "de memória" dias depois do evento
+:::
+
+## Por que isso importa
+
+Identificação eletrônica, sensores e modelos preditivos — os próximos
+temas da disciplina — **dependem** de uma base de dados coletada e
+organizada corretamente. Um modelo sofisticado não corrige um dado ruim
+na origem.
+
+## Atividade prática
+
+Em grupos: diagnosticar os problemas de uma planilha de campo real (com
+dado faltante, ID inconsistente, unidade misturada e erro de digitação) e
+reorganizá-la no formato correto.
+
+::: {.attribution}
+Enunciado completo: [atividade.qmd](atividade.qmd)
+:::
+
+## Obrigado
+
+Dúvidas? [davy.baia@ceca.ufal.br](mailto:davy.baia@ceca.ufal.br)

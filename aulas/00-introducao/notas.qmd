@@ -2,10 +2,171 @@
 title: "Notas — Aula 00"
 ---
 
-Texto de referência da aula, em formato normal de página (com a navbar do
-site). Use aqui o conteúdo mais detalhado, equivalente ao que os slides
-resumem visualmente.
+## O que é Zootecnia de Precisão
 
-## Introdução
+Zootecnia de Precisão (em inglês, *Precision Livestock Farming*, PLF) é a
+aplicação de sensores, coleta contínua de dados e modelos quantitativos ao
+manejo animal, com o objetivo de tomar decisões no nível do **indivíduo**,
+e não apenas do lote ou rebanho como um todo. É uma extensão, para a
+produção animal, dos princípios já consolidados na Agricultura de
+Precisão.
 
-Explicação detalhada do que é Zootecnia de Precisão e por que ela importa.
+No manejo tradicional, o lote é tratado como uma unidade homogênea: a
+mesma ração, o mesmo protocolo sanitário, as mesmas decisões para todos os
+animais. Na prática, porém, existe grande variabilidade individual — em
+taxa de crescimento, comportamento, resposta ao estresse térmico,
+suscetibilidade a doenças. A Zootecnia de Precisão parte do princípio de
+que essa variabilidade pode (e deve) ser medida e usada para orientar
+decisões mais específicas.
+
+## Por que "de precisão"
+
+Os principais ganhos apontados pela literatura e pela prática são:
+
+- **Eficiência produtiva**: menos desperdício de insumos como ração, água
+  e energia, ajustando o manejo à necessidade real de cada animal ou
+  grupo.
+- **Bem-estar animal**: sensores permitem detectar precocemente sinais de
+  dor, estresse ou doença, antes que se tornem visíveis a olho nu.
+- **Sustentabilidade ambiental**: uso mais eficiente de recursos reduz o
+  impacto ambiental por unidade produzida.
+- **Rastreabilidade**: a identificação individual permite acompanhar o
+  histórico completo de um animal ao longo de toda a cadeia produtiva.
+
+## Como isso é feito na prática
+
+A infraestrutura típica de um sistema de Zootecnia de Precisão inclui:
+
+- **Identificação eletrônica**: brincos RFID, chips subcutâneos, colares
+  eletrônicos, que permitem identificar cada animal automaticamente.
+- **Sensores**: de peso (balanças automáticas), temperatura corporal,
+  atividade (acelerômetros), som (para detecção de tosse, por exemplo) e
+  imagem (câmeras para análise de comportamento ou condição corporal).
+- **Coleta contínua de dados**, muitas vezes automatizada, sem necessidade
+  de intervenção manual constante.
+- **Modelos e algoritmos** que transformam o dado bruto coletado em
+  informação útil para a tomada de decisão — desde estatística descritiva
+  simples até modelos preditivos mais complexos.
+
+## PLF na prática: três exemplos reais
+
+**PLF** é a sigla em inglês para *Precision Livestock Farming* — em
+português, Pecuária de Precisão ou Zootecnia de Precisão, o mesmo conceito
+que dá nome a esta disciplina.
+
+Três casos concretos, apresentados por Daniel Berckmans (KU Leuven) em
+seminário internacional, ilustram bem o que a Zootecnia de Precisão
+entrega na prática:
+
+1. **Monitoramento de agressão por câmera** (2014): um algoritmo de visão
+   computacional identifica episódios de agressão entre suínos
+   automaticamente, com 89% de acurácia, eliminando a necessidade de
+   observação humana contínua. Parceria entre KU Leuven, Universidade de
+   Milão, TIHO (Alemanha) e Fancom (Holanda).
+2. **Detecção precoce de doença por som** (projeto EU-PLF, 2016): sensores
+   de som (SoundTalks) monitoram continuamente o índice de tosse de
+   suínos. Um aumento nesse índice antecipa sinais de infecção
+   respiratória — permitindo tratamento antes que os sintomas fiquem
+   visíveis a olho nu, em parceria com a Boehringer-Ingelheim.
+3. **Controle preditivo do crescimento em frangos**: em vez de deixar os
+   animais se alimentarem livremente (*ad libitum*), um modelo preditivo
+   ajusta a oferta de ração ao longo do tempo para seguir uma trajetória
+   de crescimento controlada. Em 12 experimentos com cerca de 2.900
+   animais cada, essa abordagem reduziu a mortalidade em 4%.
+
+Esses três exemplos mostram a progressão da disciplina: sensores geram
+dado bruto (imagem, som), algoritmos transformam esse dado em informação
+(detecção de agressão, de doença), e modelos preditivos usam essa
+informação para *controlar* o processo produtivo — não apenas descrevê-lo.
+
+**Referência:** BERCKMANS, D. *Why Precision Livestock Farming will
+create a more sustainable livestock sector — What we can learn from big
+data.* Apresentação no 4th International Huvepharma Seminar, 6-8 de
+dezembro de 2022, Penang, Malásia.
+
+## Visão geral da disciplina
+
+A ementa da disciplina está organizada em quatro grandes blocos, que
+seguem uma progressão lógica do dado bruto até a aplicação prática:
+
+1. **Coleta e administração de dados**: como registrar, organizar e
+   estruturar as informações geradas pela produção animal, de forma que
+   possam ser efetivamente analisadas depois.
+2. **Identificação eletrônica**: uso de tecnologias de identificação para
+   garantir rastreabilidade individual e permitir o estudo do
+   comportamento animal ao longo do tempo.
+3. **Sensores e modelagem**: como extrair conhecimento útil dos dados
+   coletados, incluindo modelos preditivos e simulações — por exemplo, de
+   sistemas de climatização em instalações de produção animal.
+4. **Aplicações**: como esses conceitos e ferramentas se conectam às
+   diferentes cadeias de produção animal (bovinos, suínos, aves, entre
+   outras).
+
+## Exemplo introdutório: curva de crescimento e ponto de abate
+
+O crescimento de um bovino não é linear: ele segue uma curva que acelera
+no início da vida, passa por uma fase de máxima velocidade de ganho e
+depois desacelera, aproximando-se assintoticamente do peso à maturidade
+— o "platô" da curva. Esse comportamento é bem descrito por modelos não
+lineares como Brody, Gompertz, Logístico e von Bertalanffy, amplamente
+usados na zootecnia para caracterizar curvas de crescimento em bovinos de
+corte (Coutinho, 2016, dissertação UNESP; Embrapa).
+
+No exemplo em slides, foi usado o **modelo de Gompertz**
+(W(t) = A·exp(-B·exp(-k·t))), em que A representa o peso à maturidade. O
+**ponto de inflexão** da curva — onde a velocidade de ganho de peso
+diário é máxima — ocorre quando o animal atinge cerca de **36,8% do peso
+adulto** no modelo de Gompertz (esse percentual varia por modelo: ~50%
+no Logístico, ~29,6% no von Bertalanffy).
+
+Depois da inflexão, o ganho de peso desacelera progressivamente. Segundo a
+literatura zootécnica, a fase final de crescimento é composta cada vez
+mais por deposição de gordura em vez de músculo e osso, o que aumenta o
+custo de alimentação por quilo ganho. Por isso, a decisão de abate
+normalmente não espera o animal atingir o platô — ela é tomada quando o
+animal atinge as exigências mínimas de acabamento de carcaça, geralmente
+numa faixa abaixo do peso à maturidade (no exemplo, ilustrada entre 80% e
+90% do peso adulto).
+
+Esse exemplo já antecipa o tipo de raciocínio que será usado na
+disciplina inteira: dados de sensores (peso, neste caso) alimentam um
+modelo, e o modelo orienta uma decisão de manejo — nesse caso, quando
+vender ou abater o animal.
+
+**Referências usadas neste exemplo:**
+
+<!--
+- COUTINHO, C. C. *Curvas de crescimento de características de carcaça de
+  bovinos*. Dissertação (Programa de Pós-Graduação em Zootecnia) —
+  Faculdade de Medicina Veterinária e Zootecnia, UNESP.
+  Disponível em:
+  [fmvz.unesp.br](https://www.fmvz.unesp.br/Home/ensino/pos-graduacao768/zootecnia/dissertacoeseteses/carolina-cesarino-coutinho.pdf)
+-->
+- EMBRAPA. *Aplicação de curvas de crescimento em bovinos de corte.*
+  Portal Embrapa. Disponível em:
+  [embrapa.br](https://www.embrapa.br/en/busca-de-publicacoes/-/publicacao/47171/aplicacao-de-curvas-de-crescimento-em-bovinos-de-corte)
+<!--
+- BEEFPOINT. *Crescimento e terminação de bovinos de corte — 1. Aspectos
+  gerais do crescimento e desenvolvimento.* Disponível em:
+  [beefpoint.com.br](https://beefpoint.com.br/crescimento-e-terminacao-de-bovinos-de-corte-1-aspectos-gerais-do-crescimento-e-desenvolvimento-5182/)
+  -->
+- *Comparison of non-linear models for growth characterization of
+  purebred and crossbred cattle.* PMC — National Library of Medicine.
+  Disponível em:
+  [pmc.ncbi.nlm.nih.gov](https://pmc.ncbi.nlm.nih.gov/articles/PMC13524325/)
+
+Os parâmetros numéricos usados no código (A=650 kg, B=3,08, k=0,004) são
+**ilustrativos**, escolhidos para gerar uma curva realista — não são
+valores extraídos diretamente de um estudo específico. Para um exemplo
+com dados reais, vale ajustar esses parâmetros a partir de uma base de
+pesagens de um rebanho conhecido.
+
+## Créditos das imagens
+
+As fotos usadas nos slides vêm do Wikimedia Commons, com uso permitido
+pelas respectivas licenças:
+
+- *Nelore beef cattle* — Scott Bauer, USDA (domínio público)
+- *Bovine eartag* — Izvora (domínio público)
+- *Boi Nelore no sul do Brasil* — Leonardo Felipe Rossini
+  (CC BY-SA 3.0 — requer atribuição ao reutilizar)

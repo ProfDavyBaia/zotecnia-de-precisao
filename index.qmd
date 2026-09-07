@@ -21,10 +21,26 @@ apresentação, `←`/`→` navegam) e *notas* (texto de referência).
 <div>
 <strong>Introdução à Zootecnia de Precisão</strong>
 
-Conceitos iniciais, exemplo de análise de dados de ganho de peso.
+O que é Zootecnia de Precisão, por que ela importa, e uma visão geral de
+toda a ementa da disciplina.
 
 <span class="links">[Slides](aulas/00-introducao/aula.html) ·
 [Notas](aulas/00-introducao/notas.qmd)</span>
+</div>
+:::
+
+:::{.aula-card}
+<div class="numero">01</div>
+<div>
+<strong>Introdução ao uso de processos de coleta e administração de informações relativas à produção animal</strong>
+
+Tipos e fontes de dados, coleta manual x automatizada, estruturação de
+planilhas e os problemas mais comuns que comprometem a qualidade dos
+dados coletados.
+
+<span class="links">[Slides](aulas/01-coleta-de-dados/aula.html) ·
+[Notas](aulas/01-coleta-de-dados/notas.qmd) ·
+[Atividade](aulas/01-coleta-de-dados/atividade.qmd)</span>
 </div>
 :::
 
@@ -34,16 +50,11 @@ Conceitos iniciais, exemplo de análise de dados de ganho de peso.
 
 <!-- Liste aqui os tópicos oficiais da ementa -->
 
-1. Tópico 1
-2. Tópico 2
-3. Tópico 3
+1. Introdução ao uso de processos de coleta e adinistração de informações relativas a produção animal . 
+2. Uso de identificação eletrônica para rastreabilidade e estudos do comportamento animal. 
+3. Uso de sensores e modelagens para extração de conhecimentos, modelos preditivos e simulações de sistemas de climatização na produção animal. 
+4. Aplicações nas diversas cadeias de produção animal.
 
-## Cronograma {#cronograma}
-
-| Semana | Data | Tema |
-|:------:|------|------|
-| 1      |      |      |
-| 2      |      |      |
 
 ## Avaliação {#avaliacao}
 
@@ -63,6 +74,6 @@ Conceitos iniciais, exemplo de análise de dados de ganho de peso.
 
 **Prof. Davy Baia** — UFAL, Campus CECA (Rio Largo).
 
-Dúvidas: [davybaia@gmail.com](mailto:davybaia@gmail.com)
+Dúvidas: [davy.baia@ceca.ufal.br.com](mailto:davy.baia@ceca.ufal.br)
 
 :::

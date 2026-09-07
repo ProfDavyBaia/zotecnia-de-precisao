@@ -1,0 +1,65 @@
+---
+title: "Atividade — Aula 01"
+---
+
+## Diagnóstico e reorganização de uma planilha de campo
+
+Objetivo: praticar a identificação de problemas de coleta e a
+estruturação correta de dados vistos na Aula 01.
+
+### Parte 1 — Diagnóstico
+
+Abaixo está uma planilha de campo (fictícia) de pesagens e observações de
+saúde de um lote de bezerros, exatamente como foi preenchida à mão por um
+funcionário durante o mês de março.
+
+| Animal | Observações |
+|--------|-------------|
+| 12     | 30kg dia 10/03; depois 33kg dia 15/03 |
+| 7      | 28 kg (10/03) |
+| 07     | 31 kg, mancando (15/03) |
+| 5      | 28000 g (10/03) |
+| 5      | — |
+| 9      | 300 kg (10/03) |
+
+Em grupos de 2 ou 3, identifiquem **pelo menos 5 problemas** nessa
+planilha. Para cada um, classifiquem qual tipo de problema é (dado
+faltante, unidade inconsistente, ID duplicado/inconsistente, erro de
+digitação, ou informação misturada numa mesma célula) e expliquem, em uma
+frase, por que isso atrapalharia uma análise posterior.
+
+### Parte 2 — Reorganização
+
+Reescrevam essa mesma planilha no formato "longo" (uma linha por
+observação, uma coluna por variável), do jeito que a Aula 01 apresentou:
+
+```
+id_animal | data | variavel | valor | unidade
+```
+
+Decisões que vocês vão precisar tomar (e justificar por escrito):
+
+- Como tratar o animal "7" e "07" — é o mesmo animal ou não? O que vocês
+  assumiram, e por quê?
+- Como separar a observação do animal 12, que tem duas pesagens na mesma
+  célula?
+- O que fazer com o valor de 300 kg do animal 9 — vocês mantêm, corrigem
+  ou marcam como suspeito? Justifiquem.
+- Como registrar a informação "mancando" do animal 07 — ela é a mesma
+  variável que peso, ou uma variável diferente?
+
+### Parte 3 — Discussão
+
+Para os quatro grupos de dados vistos na aula (produção/reprodução,
+saúde/bem-estar, comportamento/atividade, ambiente), discutam em grupo:
+qual desses grupos vocês coletariam manualmente numa propriedade real, e
+qual coletariam de forma automatizada? Justifiquem considerando custo,
+frequência necessária e risco de erro humano.
+
+### Entrega
+
+**Prazo: 14 de setembro de 2026.**
+
+Entreguem: (1) a lista de problemas identificados na Parte 1, (2) a
+planilha reorganizada da Parte 2, e (3) um parágrafo curto com a
+discussão da Parte 3.

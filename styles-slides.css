@@ -1,1 +1,30 @@
 /* estilos customizados dos slides (revealjs) - opcional, ajuste conforme desejar */
+
+#title-slide .title {
+  font-size: 1.5em;
+  line-height: 1.25;
+}
+
+/* legenda/crédito pequeno e discreto abaixo das fotos, para atribuição
+   de licença (Wikimedia Commons) */
+.lista-menor,
+.font-menor {
+  font-size: 0.75em;
+}
+
+.attribution {
+  font-size: 0.5em;
+  opacity: 0.6;
+  margin-top: 0.25em;
+}
+
+/* Limita a altura de qualquer imagem ao espaço vertical do slide, para
+   nunca estourar a margem — independe do width="..." usado no markdown,
+   porque max-height sempre tem prioridade sobre a proporção calculada */
+.reveal section img {
+  max-height: 50vh;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+

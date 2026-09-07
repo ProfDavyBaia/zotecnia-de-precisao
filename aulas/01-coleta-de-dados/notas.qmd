@@ -1,0 +1,136 @@
+---
+title: "Notas — Aula 01"
+---
+
+## O ponto de partida de tudo
+
+Antes de falar em sensores, identificação eletrônica ou modelos
+preditivos, temas das próximas aulas, é preciso tratar da etapa que
+sustenta todas elas: a coleta e a administração de dados na produção
+animal. Essa é a base sobre a qual toda a Zootecnia de Precisão se apoia:
+por melhor que seja um modelo estatístico ou um algoritmo, ele não
+corrige um dado que já nasceu errado ou mal registrado, princípio
+resumido pela expressão em inglês "garbage in, garbage out" (entra lixo,
+sai lixo).
+
+## Que tipos de dados coletamos
+
+Uma forma útil de organizar os tipos de dados é pensar no animal como um
+sistema que recebe energia (via alimento) e a distribui entre diferentes
+finalidades — manutenção basal, atividade, termorregulação, estado
+mental/bem-estar e produção:
+
+$$E_{tot} = E_{manutenção} + E_{atividade} + E_{térmico} + E_{mental} + E_{produção}$$
+
+Essa forma de organizar o problema é adaptada de Berckmans, D. (2022),
+*Why Precision Livestock Farming will create a more sustainable livestock
+sector*, apresentação no 4th International Huvepharma Seminar (a mesma
+referência usada nos exemplos reais da Aula 00).
+
+É importante não ler essa equação como uma correspondência limpa de "1
+termo → 1 tipo de dado". Na prática, alguns dados informam mais de um
+termo ao mesmo tempo, e um dos quatro grupos de dados abaixo nem mede
+energia diretamente — ele mede a *causa* de um dos termos. A relação real
+é:
+
+- **Produção e reprodução** (peso vivo, ganho de peso, produção de leite
+  ou ovos, taxa de prenhez, intervalo entre partos, número de crias) mede
+  diretamente o termo *produção* — é literalmente o resultado que esse
+  termo representa.
+- **Saúde e bem-estar** (temperatura corporal, frequência cardíaca,
+  ocorrência de doenças ou lesões, escore de condição corporal) informa
+  **dois** termos ao mesmo tempo: *manutenção* (o "custo" basal de manter
+  o organismo funcionando) e *mental* (bem-estar/estresse). O próprio
+  Berckmans usa a frequência cardíaca como indicador para os dois,
+  dependendo do contexto da análise.
+- **Comportamento e atividade** (tempo de ruminação, número de passos,
+  tempo deitado ou em pé, padrões de interação social) mede diretamente o
+  termo *atividade*.
+- **Ambiente** (temperatura e umidade das instalações, qualidade do ar,
+  luminosidade) é o caso diferente: ele não mede nenhum termo de energia
+  diretamente. Ele mede a **causa** do termo *térmico* — quanto mais frio
+  ou quente o ambiente, mais energia o animal precisa gastar se
+  regulando termicamente, mas essa energia gasta em si só aparece
+  indiretamente (por exemplo, via frequência cardíaca).
+
+Ou seja, a equação não é uma classificação de dados — é um modelo de para
+onde vai a energia do animal, que ajuda a justificar *por que* cada um
+desses quatro grupos de dados é relevante de se coletar.
+
+## Como coletamos: manual x automatizado
+
+Existem, essencialmente, duas formas de obter esses dados:
+
+**Coleta manual**, feita por meio de fichas de campo, planilhas ou
+cadernetas de manejo preenchidas pelo produtor ou técnico. Tem baixo
+custo inicial, mas está sujeita a erro humano (esquecimento, erro de
+leitura, erro de digitação) e costuma ter baixa frequência — por exemplo,
+uma pesagem semanal ou mensal, insuficiente para captar variações
+rápidas.
+
+**Coleta automatizada**, feita por sensores, balanças automáticas,
+leitores de identificação eletrônica (RFID) e sistemas de câmeras. Tem
+custo inicial mais alto e exige manutenção e calibração periódica, mas
+oferece coleta contínua, objetiva e de alta frequência — a base do que
+Berckmans (2022, ver Aula 00) chama de monitoramento "contínuo, automático
+e em tempo real".
+
+Na prática, a maioria dos sistemas reais combina as duas abordagens,
+usando automação onde o retorno justifica o investimento e coleta manual
+onde não.
+
+## Estruturar antes de analisar
+
+Um dado bem coletado ainda pode se tornar inútil se for mal organizado.
+O princípio central de organização de dados — válido para qualquer área,
+não só a zootecnia — é: **cada linha representa uma observação, e cada
+coluna representa uma variável** (esse princípio é frequentemente chamado
+de "dado organizado" ou *tidy data* na literatura de ciência de dados).
+
+Na prática, isso significa:
+
+- Cada animal deve ter um identificador único e consistente ao longo do
+  tempo — nunca reutilizar ou alterar um ID já em uso.
+- Cada observação deve registrar a data (e, quando relevante, a hora).
+- Cada variável medida deve estar em sua própria coluna, com a unidade
+  explícita no nome (por exemplo, `peso_kg`, não apenas `peso`).
+- Nunca misturar duas informações em uma única célula (como "30kg;
+  depois 33kg", que exigiria processamento manual posterior para separar
+  os dois valores).
+
+O exemplo nos slides contrasta uma planilha mal estruturada (que mistura
+datas e valores em uma célula só) com uma planilha "longa" bem
+estruturada, em que cada linha é uma medição individual — um formato que
+facilita enormemente qualquer análise posterior, seja ela feita em uma
+planilha eletrônica ou em ferramentas como Python.
+
+## Problemas comuns na coleta
+
+Alguns dos problemas mais frequentes que comprometem a qualidade dos
+dados na produção animal:
+
+- **Dados faltantes**: um animal não foi pesado em determinado dia, ou um
+  sensor ficou sem sinal por um período.
+- **IDs duplicados ou inconsistentes**: o mesmo animal identificado com
+  códigos diferentes em momentos distintos, dificultando o rastreamento
+  do seu histórico completo.
+- **Unidades misturadas**: uma planilha registrando peso em quilogramas e
+  outra em gramas, sem padronização.
+- **Erros de digitação**: um peso de 300 kg registrado por engano no
+  lugar de 30,0 kg — um erro que pode distorcer significativamente
+  qualquer estatística calculada sobre os dados.
+- **Drift (desvio) de sensores**: sensores eletrônicos podem perder
+  calibração com o tempo, introduzindo um viés sistemático que só é
+  percebido se houver verificação periódica.
+- **Atraso no registro**: anotar informações "de memória" dias depois do
+  evento ocorrido, o que aumenta a chance de erros e imprecisões.
+
+## Por que isso importa
+
+Os próximos temas da disciplina — identificação eletrônica (Aula 02) e
+sensores e modelagem preditiva (Aulas seguintes) — dependem diretamente
+da qualidade da base de dados construída nesta etapa. Um algoritmo
+sofisticado de predição não tem como compensar uma base de dados repleta
+de erros de coleta ou de estruturação: a etapa de coleta e administração
+de dados é, portanto, um pré-requisito silencioso para tudo o que vem
+depois na Zootecnia de Precisão.
