@@ -1,0 +1,169 @@
+---
+title: "Aula 02 — Identificação Eletrônica e IoT na Produção Animal"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    transition: fade
+    css: ../../styles-slides.css
+---
+
+## Da coleta ao dado em tempo real
+
+Na Aula 01 vimos que dados podem ser coletados **manualmente** ou de
+forma **automatizada**. Hoje entramos na tecnologia que torna a coleta
+automatizada possível: **identificação eletrônica** e **sensores**
+conectados por **sistemas embarcados**.
+
+::: {.attribution}
+Identificação eletrônica e sensores são o 2º bloco da ementa —
+rastreabilidade e estudo do comportamento individual.
+:::
+
+## O que é identificação eletrônica?
+
+Cada animal recebe um **código único**, lido eletronicamente, que o
+acompanha por toda a vida produtiva.
+
+::: {.font-menor}
+- É o que torna possível ligar **qualquer** dado (peso, localização,
+  consumo, comportamento) a **um** indivíduo específico, automaticamente;
+- Base de toda rastreabilidade — do curral à exportação;
+- Tecnologia dominante hoje: **RFID** (identificação por radiofrequência).
+:::
+
+## RFID: como funciona
+
+:::: {.columns}
+
+::: {.column .font-menor width="55%"}
+- A **tag** (brinco, bolus ruminal, chip) não tem bateria: chip + antena
+  em bobina;
+- O **leitor** emite um campo eletromagnético que energiza a tag;
+- A tag "acorda" e transmite seu código único de volta ao leitor.
+:::
+
+::: {.column width="45%"}
+![](https://commons.wikimedia.org/wiki/Special:FilePath/134_2khz_rfid_animal_tag.jpg){fig-alt="Tag RFID de baixa frequência para identificação animal" width="100%"}
+:::
+
+::::
+
+## Bandas de frequência do RFID
+
+::: {.font-menor}
+| Banda | Frequência | Alcance | Uso típico |
+|-------|-----------|---------|------------|
+| LF | 125 – 134,2 kHz | Poucos cm | Brincos e bolus para bovinos, ovinos (padrão internacional) |
+| HF | 13,56 MHz | Até ~1 m | NFC — cartões, apps de celular |
+| UHF | 860 – 960 MHz | Vários metros | Leitura em massa, portões, currais |
+:::
+
+## O padrão internacional: ISO 11784/11785
+
+LF **134,2 kHz**, protocolo **FDX-B** — é o padrão que garante que a tag
+de um fabricante seja lida pelo leitor de outro.
+
+::: {.attribution}
+Adotado pelo SISBOV (rastreabilidade bovina no Brasil) e por sistemas
+nacionais de identificação animal em diversos países.
+:::
+
+## Rastreabilidade individual na prática
+
+::: {.font-menor}
+- Portões de acesso a **cocho ou bebedouro** — registra quem comeu, quanto
+  e quando, sem intervenção humana;
+- **Balanças automáticas** — pesagem individual toda vez que o animal
+  passa por um ponto de acesso;
+- **Currais e portões de manejo** — separação automática por lote,
+  categoria ou tratamento;
+- **SISBOV / exportação** — rastreio obrigatório do nascimento ao abate.
+:::
+
+## Sensores vestíveis
+
+Coleiras, podômetros e brincos-sensores acrescentam **sensores** ao
+código de identificação — não dizem só "quem", dizem também "o que o
+animal está fazendo agora".
+
+::: {.font-menor}
+- **Acelerômetro**: passos, tempo deitado/em pé, ruminação, indícios de cio
+- **Temperatura / pH ruminal** (bolus): febre, acidose
+- **Frequência cardíaca**: estresse, esforço, indício precoce de doença
+:::
+
+::: {.attribution}
+Estes sensores alimentam diretamente o grupo "comportamento e atividade"
+visto na Aula 01.
+:::
+
+## Sistemas embarcados: a peça que junta tudo
+
+:::: {.columns}
+
+::: {.column .font-menor width="55%"}
+Um **microcontrolador** (ex.: ESP32) é o "cérebro" que:
+
+- lê o sinal do leitor RFID e/ou do sensor;
+- processa ou empacota o dado;
+- envia por Wi-Fi, LoRa ou grava localmente para sincronizar depois.
+:::
+
+::: {.column width="45%"}
+![](https://commons.wikimedia.org/wiki/Special:FilePath/ESP32_Dev_Board.jpg){fig-alt="Placa de desenvolvimento ESP32" width="100%"}
+:::
+
+::::
+
+## Estudo de caso: estação de alimentação inteligente
+
+::: {.font-menor}
+Protótipo com **ESP32** + leitor RFID **LF 134,2 kHz (FDX-B, ISO
+11784/11785)** + célula de carga com amplificador **HX711**:
+
+1. o animal se aproxima do cocho;
+2. o leitor identifica a tag e reconhece **qual** animal chegou;
+3. a célula de carga mede o quanto de ração foi consumido;
+4. o sistema registra, sozinho, *quem comeu, quanto e quando*.
+:::
+
+::: {.attribution}
+Exemplo de arquitetura aplicável a ovinos, caprinos e bovinos confinados.
+:::
+
+## Desafios no campo
+
+::: {.font-menor}
+- **Energia**: muitas propriedades não têm rede elétrica constante —
+  bateria + painel solar é comum;
+- **Conectividade**: sem internet o tempo todo — sistemas precisam
+  funcionar **offline** e sincronizar quando houver sinal;
+- **Custo x escala**: cada ponto de leitura tem um custo — nem todo
+  rebanho justifica automatizar tudo;
+- **Manutenção**: poeira, umidade, o próprio animal — exigem manutenção e
+  calibração periódicas (lembrando o *drift* de sensores da Aula 01).
+:::
+
+## Do sensor ao dado — e do dado à decisão
+
+**Identificação** (quem) + **sensor** (o quê) → **dado bruto**, coletado
+continuamente e já associado a um indivíduo.
+
+::: {.attribution}
+Esse fluxo de dado contínuo, automático e por indivíduo é a matéria-prima
+das próximas aulas: modelos preditivos e simulação.
+:::
+
+## Atividade prática
+
+Em grupos: projetar um sistema de identificação e sensoriamento para um
+cenário real de produção animal, justificando as escolhas técnicas.
+
+::: {.attribution}
+Enunciado completo: [atividade.qmd](atividade.qmd)
+:::
+
+## Obrigado
+
+Dúvidas? [davy.baia@ceca.ufal.br](mailto:davy.baia@ceca.ufal.br)

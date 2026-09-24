@@ -1,0 +1,180 @@
+---
+title: "Notas — Aula 02"
+---
+
+## Da coleta ao dado em tempo real
+
+A Aula 01 estabeleceu que dados podem ser coletados manualmente ou de
+forma automatizada, e que a coleta automatizada — feita por sensores,
+balanças automáticas e leitores de identificação eletrônica — é o que
+permite chegar ao que Berckmans (2022, ver Aula 00) chama de
+monitoramento "contínuo, automático e em tempo real". Esta aula detalha a
+tecnologia que sustenta essa automação: a identificação eletrônica e os
+sensores conectados por sistemas embarcados.
+
+## O que é identificação eletrônica
+
+Identificação eletrônica é a atribuição, a cada animal, de um código
+único que pode ser lido por um equipamento eletrônico, sem depender de
+leitura visual ou de anotação manual. É a peça que torna possível ligar
+qualquer dado coletado — peso, consumo, localização, comportamento — a
+um indivíduo específico, de forma automática e sem erro de digitação ou
+ambiguidade de ID (um dos problemas levantados na Aula 01).
+
+A tecnologia dominante para essa finalidade, hoje, é o **RFID**
+(*Radio-Frequency Identification*, identificação por radiofrequência).
+
+## RFID: princípio de funcionamento
+
+Um sistema RFID tem dois componentes principais:
+
+- A **tag** (etiqueta), normalmente passiva — ou seja, sem bateria
+  própria. É formada por um pequeno chip conectado a uma antena em forma
+  de bobina. Pode estar embutida em um brinco, em um chip subcutâneo ou
+  em um bolus (cápsula) ruminal.
+- O **leitor**, que emite um campo eletromagnético. Quando a tag entra
+  nesse campo, a bobina da antena capta energia suficiente para "acordar"
+  o chip, que então transmite de volta seu código de identificação único
+  para o leitor.
+
+Por não depender de bateria, a tag tem vida útil praticamente igual à do
+animal — não precisa de troca ou recarga.
+
+## Bandas de frequência
+
+RFID opera em diferentes faixas de frequência, cada uma com um
+compromisso diferente entre alcance de leitura, custo e aplicação:
+
+- **LF (Low Frequency)**, tipicamente 125–134,2 kHz: alcance curto (poucos
+  centímetros), é a faixa usada em brincos e bolus ruminais para bovinos,
+  ovinos e caprinos — é o padrão internacional para identificação animal.
+- **HF (High Frequency)**, 13,56 MHz: alcance de até cerca de 1 metro; é a
+  faixa usada em NFC, presente em cartões e na maioria dos celulares
+  modernos — mais comum em aplicações de identificação humana ou de
+  produtos do que na identificação animal em si.
+- **UHF (Ultra High Frequency)**, 860–960 MHz: alcance de vários metros,
+  permite leitura simultânea de múltiplas tags em movimento — útil em
+  portões e currais onde vários animais passam ao mesmo tempo, mas menos
+  usado que o LF na identificação individual oficial de bovinos.
+
+## O padrão ISO 11784/11785
+
+Para que a tag de um fabricante possa ser lida por um leitor de outro
+fabricante, a identificação eletrônica animal segue um padrão
+internacional: **ISO 11784** (estrutura do código transmitido) e **ISO
+11785** (o protocolo de comunicação entre tag e leitor, tipicamente
+**FDX-B**, operando em 134,2 kHz).
+
+Esse padrão é a base de sistemas nacionais de rastreabilidade animal,
+incluindo o SISBOV no Brasil, e é o que garante interoperabilidade entre
+equipamentos de diferentes fornecedores — um leitor de qualquer marca
+consegue ler qualquer tag compatível com o padrão.
+
+## Rastreabilidade individual na prática
+
+Com um código único por animal, a identificação eletrônica passa a ser
+usada em diferentes pontos da cadeia produtiva:
+
+- **Portões de acesso individual** a cocho ou bebedouro: o sistema
+  reconhece qual animal se aproximou e pode registrar consumo individual
+  de ração ou água, ou mesmo liberar/restringir acesso conforme o
+  protocolo de manejo daquele animal;
+- **Balanças automáticas**: cada passagem por um ponto de pesagem já
+  associa o peso registrado ao ID correto, sem necessidade de leitura
+  manual;
+- **Currais e portões de manejo**: separação automática de animais por
+  lote, categoria (ex: fêmeas prenhas) ou protocolo de tratamento;
+- **SISBOV e exportação**: rastreabilidade obrigatória do nascimento até
+  o abate, exigida por mercados importadores.
+
+## Sensores vestíveis
+
+Além da identificação, sensores acoplados ao animal (em coleiras,
+podômetros ou nos próprios brincos e bolus) acrescentam uma camada de
+informação contínua sobre o comportamento e o estado do animal:
+
+- **Acelerômetro**: conta passos, mede tempo deitado versus em pé, e
+  pode inferir padrões de ruminação ou indícios de cio a partir de
+  mudanças no padrão de movimento;
+- **Temperatura e pH ruminal** (via bolus): a temperatura corporal é um
+  indicador clássico de febre/infecção, e o pH ruminal indica risco de
+  acidose;
+- **Frequência cardíaca**: indicador de estresse, esforço físico ou sinal
+  precoce de problema de saúde.
+
+Note que esses sensores alimentam diretamente o grupo de dados
+"comportamento e atividade" apresentado na Aula 01 — a diferença é que,
+agora, a coleta é contínua e automática, e já vem associada ao ID
+correto do animal.
+
+## Sistemas embarcados
+
+A peça que conecta identificação eletrônica, sensores e o restante do
+sistema é o **sistema embarcado**: um microcontrolador de baixo custo
+(por exemplo, o **ESP32**, amplamente usado em projetos de IoT agrícola)
+responsável por:
+
+- ler o sinal do leitor RFID e/ou dos sensores conectados;
+- processar ou simplesmente empacotar esse dado;
+- transmitir o dado (via Wi-Fi, LoRa ou outro protocolo de rádio) ou
+  gravá-lo localmente para sincronizar quando houver conectividade.
+
+Esse arranjo — microcontrolador + leitor/sensor + conectividade + fonte
+de energia — é a arquitetura básica por trás da maioria dos dispositivos
+de "IoT" (*Internet of Things*, Internet das Coisas) usados na pecuária
+de precisão.
+
+## Estudo de caso: estação de alimentação inteligente
+
+Um exemplo concreto dessa arquitetura é um protótipo de estação de
+alimentação individual para ovinos, combinando:
+
+- um **ESP32** como microcontrolador central;
+- um leitor RFID de baixa frequência (**134,2 kHz, protocolo FDX-B,
+  padrão ISO 11784/11785**) para identificar o animal que se aproxima do
+  cocho;
+- uma **célula de carga** com módulo amplificador **HX711** para medir o
+  peso de ração consumido.
+
+Quando um animal se aproxima, o leitor identifica sua tag, e a célula de
+carga registra continuamente o peso do cocho antes e depois — permitindo
+calcular, sem qualquer intervenção humana, quanto **aquele** animal
+específico consumiu naquela visita. Repetido ao longo do dia, isso gera
+um histórico individual de consumo alimentar — um dado que seria
+praticamente inviável de coletar manualmente com essa frequência e
+precisão.
+
+Esse mesmo princípio — identificação eletrônica associada a um sensor —
+se generaliza para outras aplicações: leitura de tags via NFC em
+aplicativos de gestão de rebanho no celular, com funcionamento **offline**
+(sem depender de conexão constante à internet) e sincronização
+posterior, é outro exemplo comum em propriedades sem cobertura de rede
+confiável.
+
+## Desafios no campo
+
+Levar identificação eletrônica e sensores para uma propriedade real
+esbarra em desafios práticos:
+
+- **Energia**: muitas propriedades rurais não têm acesso constante à rede
+  elétrica nos pontos onde os equipamentos precisam operar — soluções
+  com bateria recarregada por painel solar são comuns;
+- **Conectividade**: internet nem sempre está disponível no campo; um
+  sistema robusto precisa conseguir operar **offline**, armazenando os
+  dados localmente e sincronizando quando a conexão estiver disponível;
+- **Custo versus escala**: cada ponto de leitura (cocho, portão, balança)
+  representa um custo de equipamento — automatizar todos os pontos nem
+  sempre se justifica economicamente, dependendo do tamanho do rebanho;
+- **Manutenção**: poeira, umidade, chuva e o contato direto com os
+  próprios animais degradam equipamentos ao longo do tempo, exigindo
+  manutenção e calibração periódicas — reforçando o problema de *drift*
+  de sensores já discutido na Aula 01.
+
+## Do sensor ao dado — e do dado à decisão
+
+O resultado de tudo isso é um fluxo de dado contínuo, automático e já
+associado a um indivíduo — exatamente a matéria-prima que os modelos
+preditivos e as simulações das próximas aulas vão precisar para
+funcionar. Sem identificação eletrônica confiável e sensores bem
+calibrados, não há como sustentar decisões no nível do indivíduo, que é o
+que define a Zootecnia de Precisão (ver Aula 00).

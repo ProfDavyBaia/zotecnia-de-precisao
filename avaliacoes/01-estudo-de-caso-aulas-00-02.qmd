@@ -1,0 +1,110 @@
+---
+title: "Avaliação 01 — Estudo de Caso (Aulas 00 a 02)"
+---
+
+## Objetivo
+
+Projetar, em grupo, um sistema de monitoramento de Zootecnia de Precisão
+para um cenário real de produção animal, integrando os três blocos
+vistos até aqui: a justificativa da abordagem (Aula 00), o plano de
+coleta e estruturação de dados (Aula 01) e a identificação eletrônica /
+sensores / arquitetura embarcada (Aula 02).
+
+::: {.attribution}
+Grupos de 2 a 3 pessoas.
+:::
+
+## Cenário
+
+Escolham **um** cenário de produção animal (pode ser outro, diferente
+destes, desde que aprovado previamente com o professor):
+
+1. Rebanho de ovinos em pasto extensivo, sem rede elétrica no local;
+2. Bovinos de leite confinados, com acesso a energia elétrica constante;
+3. Aves de corte em galpão climatizado;
+4. Bovinos de corte em regime de pasto rotacionado (piquetes).
+
+## Estrutura do trabalho
+
+### Parte 1 — Justificativa (Aula 00)
+
+Expliquem, para o cenário escolhido, por que a Zootecnia de Precisão se
+justifica. Escolham **pelo menos dois** dos quatro benefícios vistos na
+Aula 00 (eficiência, bem-estar animal, sustentabilidade, rastreabilidade)
+e argumentem, com base nas características do cenário, por que eles são
+relevantes especificamente ali.
+
+### Parte 2 — Plano de coleta de dados (Aula 01)
+
+- Indiquem quais dos quatro grupos de dados da Aula 01
+  (produção/reprodução, saúde/bem-estar, comportamento/atividade,
+  ambiente) o grupo vai coletar, e justifiquem a escolha para o cenário;
+- Para cada grupo escolhido, decidam se a coleta será manual ou
+  automatizada, e justifiquem considerando custo, frequência necessária e
+  risco de erro humano;
+- Desenhem um exemplo de planilha no formato "longo" (`id_animal | data |
+  variavel | valor | unidade`), como visto na Aula 01, com pelo menos
+  **5 linhas** de dados fictícios cobrindo pelo menos duas variáveis
+  diferentes.
+
+### Parte 3 — Identificação e sensores (Aula 02)
+
+- Escolham e justifiquem a banda de RFID (LF, HF ou UHF) mais adequada
+  ao cenário;
+- Escolham pelo menos **dois sensores** vistos na Aula 02 e liguem cada
+  um a um dos grupos de dados da Parte 2;
+- Esbocem a arquitetura embarcada do sistema (microcontrolador, leitor
+  RFID/sensor, conectividade, fonte de energia) — pode ser um diagrama
+  simples, desenhado à mão ou em qualquer ferramenta;
+- Escolham **um** desafio de campo (energia, conectividade, custo x
+  escala ou manutenção) especialmente relevante para o cenário, e
+  proponham uma solução concreta.
+
+### Parte 4 — Riscos e qualidade de dados
+
+Identifiquem **pelo menos dois** problemas de qualidade de dados vistos
+na Aula 01 (dado faltante, ID duplicado/inconsistente, unidade
+misturada, erro de digitação, *drift* de sensor, atraso no registro) que
+poderiam surgir especificamente no sistema que vocês projetaram, e
+expliquem o que no design do sistema ajudaria a evitá-los ou detectá-los.
+
+### Parte 5 — Síntese
+
+Em um parágrafo curto, respondam: **que decisão de manejo esse sistema
+de monitoramento torna possível que, sem ele, não seria possível
+(ou seria inviável na prática)?**
+
+## Formato de entrega
+
+Relatório em PDF ou documento de texto, com no máximo 4 páginas (sem
+contar capa e diagramas), cobrindo as Partes 1 a 5 na ordem acima,
+identificando os integrantes do grupo.
+
+## Critérios de avaliação
+
+::: {.font-menor}
+| Item | Peso |
+|------|------|
+| Parte 1 — Justificativa (Aula 00) | 35% |
+| Parte 2 — Plano de coleta de dados (Aula 01) | 35% |
+| Parte 3 — Identificação e sensores (Aula 02) | 10% |
+| Parte 4 — Riscos e qualidade de dados | 10% |
+| Parte 5 — Síntese | 15% |
+| Clareza e organização do relatório | 5% |
+:::
+
+
+
+## Entrega
+
+**Prazo:** 29 de setembro de 2026, até às 23:59.
+
+**Modalidade:** entrega via e-mail: davy.baia@ceca.ufal.br
+
+**Assunto:** [2026.2.ZP] - Trabalho Avaliativo 01.
+
+**Corpo do e-mail:** Nomes dos integrantes em ordem alfabética.
+
+```
+
+```

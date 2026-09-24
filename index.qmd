@@ -44,6 +44,20 @@ dados coletados.
 </div>
 :::
 
+:::{.aula-card}
+<div class="numero">02</div>
+<div>
+<strong>Identificação Eletrônica e IoT na Produção Animal</strong>
+
+RFID e o padrão ISO 11784/11785, sensores vestíveis, sistemas embarcados
+(ESP32) e os desafios de energia e conectividade no campo.
+
+<span class="links">[Slides](aulas/02-sensores-e-iot/aula.html) ·
+[Notas](aulas/02-sensores-e-iot/notas.qmd) ·
+[Atividade](aulas/02-sensores-e-iot/atividade.qmd)</span>
+</div>
+:::
+
 <!-- Duplique o bloco ":::{.aula-card} ... :::" acima para cada nova aula -->
 
 ## Ementa {#ementa}
@@ -58,7 +72,23 @@ dados coletados.
 
 ## Avaliação {#avaliacao}
 
-<!-- Critérios, instrumentos e pesos -->
+Avaliação composta por estudos de caso aplicados, um a cada bloco de
+aulas.
+
+:::{.aula-card}
+<div class="numero">01</div>
+<div>
+<strong>Estudo de Caso — Aulas 00 a 02</strong>
+
+Projeto, em grupo, de um sistema de monitoramento de precisão para um
+cenário real, integrando coleta de dados, identificação eletrônica e
+sensores/IoT.
+
+<span class="links">[Enunciado](avaliacoes/01-estudo-de-caso-aulas-00-02.qmd)</span>
+</div>
+:::
+
+<!-- Peso de cada avaliação na composição final da nota: a definir -->
 
 ## Bibliografia {#bibliografia}
 

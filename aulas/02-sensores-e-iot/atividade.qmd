@@ -1,0 +1,51 @@
+---
+title: "Atividade — Aula 02"
+---
+
+## Projeto: sistema de identificação e sensoriamento
+
+Objetivo: aplicar os conceitos de identificação eletrônica, sensores e
+sistemas embarcados vistos na Aula 02 ao projeto (no papel) de um sistema
+real de monitoramento.
+
+### Parte 1 — Cenário
+
+Em grupos de 2 ou 3, escolham **um** cenário de produção animal:
+
+- Rebanho de ovinos em pasto extensivo, sem rede elétrica no local;
+- Bovinos de leite confinados, com acesso a energia elétrica constante;
+- Aves de corte em galpão climatizado.
+
+### Parte 2 — Escolhas técnicas
+
+Para o cenário escolhido, definam e **justifiquem por escrito**:
+
+1. **Identificação eletrônica**: qual banda de RFID (LF, HF ou UHF) faz
+   mais sentido, considerando alcance necessário e custo por unidade?
+2. **Sensor(es)**: qual(is) sensor(es) da Aula 02 vocês instalariam, e a
+   qual dos quatro grupos de dados da Aula 01 (produção/reprodução,
+   saúde/bem-estar, comportamento/atividade, ambiente) cada um se refere?
+3. **Arquitetura embarcada**: um esboço (pode ser um diagrama simples)
+   mostrando como identificação, sensor, microcontrolador e conectividade
+   se conectam nesse sistema.
+
+### Parte 3 — Desafios de campo
+
+Escolham **pelo menos um** dos desafios vistos na aula (energia,
+conectividade, custo x escala, manutenção) que seja especialmente
+relevante para o cenário escolhido, e proponham uma solução concreta.
+
+### Parte 4 — Ligação com a Aula 01
+
+Escolham **um** dos problemas de qualidade de dados vistos na Aula 01
+(dado faltante, ID duplicado, unidade misturada, erro de digitação,
+*drift* de sensor, atraso no registro) e expliquem, especificamente para
+o sistema que vocês projetaram, como ele poderia surgir e o que no design
+do sistema ajudaria a evitá-lo ou detectá-lo.
+
+### Entrega
+
+**Prazo:** *(a definir)*
+
+Entreguem um documento curto (1–2 páginas) cobrindo as Partes 1 a 4,
+incluindo o esboço da arquitetura da Parte 2.
