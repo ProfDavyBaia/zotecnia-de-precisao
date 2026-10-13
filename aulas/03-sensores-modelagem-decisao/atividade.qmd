@@ -67,7 +67,8 @@ de todos os integrantes na fala. Slides são opcionais, mas recomendados.
 
 ### Entrega
 
-**Prazo:** *(a definir)*
-
-Entreguem o resumo escrito (PDF) antes da apresentação. Modalidade de
-entrega: *(a definir)*.
+**Prazo:** 26 de outubro de 2026, até às 23:59.
+**Modalidade:** entrega via e-mail — [davy.baia@ceca.ufal.br](mailto:davy.baia@ceca.ufal.br)
+- **Assunto:** [2026.2.ZP] - Trabalho 02
+- **Corpo do e-mail:** nomes dos integrantes em ordem alfabética
+- **Anexo:** o resumo escrito (PDF)
