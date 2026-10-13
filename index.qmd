@@ -58,6 +58,18 @@ RFID e o padrão ISO 11784/11785, sensores vestíveis, sistemas embarcados
 </div>
 :::
 
+:::{.aula-card}
+<div class="numero">03</div>
+<div>
+<strong>Sensores, Modelagem e Tomada de Decisão</strong>
+
+Extração de conhecimento a partir de sensores, modelos preditivos e
+simulação de sistemas de climatização na produção animal.
+
+<span class="links">[Atividade](aulas/03-sensores-modelagem-decisao/atividade.qmd)</span>
+</div>
+:::
+
 <!-- Duplique o bloco ":::{.aula-card} ... :::" acima para cada nova aula -->
 
 ## Ementa {#ementa}

@@ -1,0 +1,73 @@
+---
+title: "Atividade — Aula 03"
+---
+
+## Estudo de caso: um artigo real de Zootecnia de Precisão
+
+Objetivo: encontrar e analisar um artigo científico (ou estudo de caso
+técnico) que descreva uma aplicação real de Zootecnia de Precisão,
+identificando nele os três elementos que conectam tudo o que vimos até
+aqui — **sensores de coleta** (Aulas 01–02), **arquitetura do sistema**
+(Aula 02) e **tomada de decisão** a partir do dado (prévia da Aula 03).
+
+::: {.attribution}
+Grupos de 2 ou 3 pessoas.
+:::
+
+### Parte 1 — Busca do artigo
+
+Procurem em bases como Google Scholar, Periódicos CAPES, Scopus, Web of
+Science, IEEE Xplore ou ScienceDirect. Sugestões de termos de busca (em
+português e inglês):
+
+::: {.font-menor}
+- "precision livestock farming" + sensor
+- "sensor-based livestock monitoring"
+- "IoT" + "animal production" / "pecuária"
+- "RFID" + "cattle" ou "sheep" ou "poultry monitoring"
+- "machine learning" + "livestock health prediction"
+- "zootecnia de precisão"
+:::
+
+O artigo escolhido precisa descrever uma aplicação **real ou
+experimental** (qualquer espécie: bovinos, ovinos, caprinos, suínos,
+aves...) e precisa conter, explícita ou implicitamente, os três
+elementos abaixo. Se um artigo não tratar claramente de pelo menos um
+deles, procurem outro.
+
+### Parte 2 — Resumo escrito (por grupo)
+
+Produzam um resumo cobrindo:
+
+1. **Referência completa** do artigo (autores, ano, veículo de
+   publicação);
+2. **Contexto**: cadeia produtiva, espécie animal e problema que o
+   artigo busca resolver;
+3. **Sensores e coleta de dados**: quais sensores ou tecnologia de
+   identificação eletrônica o artigo usa, e a qual(is) dos quatro grupos
+   de dados vistos na Aula 01 (produção/reprodução, saúde/bem-estar,
+   comportamento/atividade, ambiente) isso corresponde;
+4. **Arquitetura do sistema**: como os dados saem do sensor até virar
+   informação utilizável — microcontrolador, conectividade,
+   armazenamento, processamento — identificando paralelos com a
+   arquitetura vista na Aula 02;
+5. **Tomada de decisão**: o que o sistema faz com o dado processado —
+   gera um alerta, aciona algo automaticamente, alimenta um modelo
+   preditivo, ou apenas apoia uma decisão humana?
+6. **Síntese**: qual ganho esse sistema traz em relação ao manejo
+   tradicional (ligando com os benefícios da Aula 00), e qual limitação
+   ou desafio de implementação os próprios autores relatam (ligando com
+   os desafios de campo da Aula 02).
+
+### Parte 3 — Apresentação oral
+
+Cada grupo apresenta o artigo em até **7 minutos**, cobrindo contexto,
+sensores, arquitetura, decisão e síntese (Partes 1–2), com participação
+de todos os integrantes na fala. Slides são opcionais, mas recomendados.
+
+### Entrega
+
+**Prazo:** *(a definir)*
+
+Entreguem o resumo escrito (PDF) antes da apresentação. Modalidade de
+entrega: *(a definir)*.
