@@ -1,0 +1,129 @@
+---
+title: "Projeto Aplicado — Monitoramento de Estabilidade Aeróbica de Silagem"
+subtitle: "Entrega 2 — Arquitetura de sensores e lógica de alertas"
+---
+
+## Continuação
+
+Esta entrega parte da descrição do problema e da fundamentação na
+literatura feitas na [Entrega 1](entrega-01-gabarito.qmd), e define
+uma primeira arquitetura de sensores e a lógica de alertas para o
+protótipo piloto. Lembrete da Entrega 1: o experimento mede aquecimento
+com o silo sempre fechado, não deterioração pós-abertura — o critério de
+2°C é o adotado pelo protocolo, não um valor confirmado por literatura
+específica para o silo fechado.
+
+## 3. Arquitetura de sensores e lógica de alertas (piloto)
+
+### Variável prioritária: temperatura
+
+Confirmando a decisão já tomada para este experimento, a temperatura é
+a primeira variável a automatizar: é o critério adotado pelo protocolo
+(2°C acima do ambiente) e também a variável que, mesmo na literatura de
+fenômeno diferente (pós-abertura), antecede o pH como sinal de
+deterioração (Shan et al., 2021).
+
+### Dois canais, não um
+
+O critério é **diferencial** (temperatura da silagem *menos* temperatura
+ambiente), e não um valor absoluto. Isso significa que a arquitetura
+mínima precisa de **dois sensores por unidade monitorada**: um sensor
+de penetração dentro do vaso, e um sensor de referência medindo a
+temperatura ambiente da sala/galpão (pode ser compartilhado entre vasos
+próximos, já que o ambiente é o mesmo).
+
+Como o protocolo já mede sempre com o vaso fechado (Entrega 1), o
+sensor do vaso pode ser um probe fixo, inserido uma única vez através
+de um furo selado na tampa, sem necessidade de abrir o vaso a cada
+leitura. Na prática, isso é uma vantagem adicional da automação: o
+sensor fixo substitui a inserção manual repetida do termômetro,
+respeitando a mesma condição de fechamento do protocolo atual.
+
+### Escolha de tecnologia de sensor
+
+::: {.font-menor}
+- **Termopar tipo T** (usado por Shan et al., 2021): alta precisão
+  (±0,1°C), mas cada sensor precisa de um canal de leitura próprio —
+  mais fios e eletrônica de condicionamento por canal, o que fica caro
+  ao escalar para 12 ou 48 pontos.
+- **Sensor digital 1-Wire (ex: DS18B18/DS18B20)**: menor precisão
+  nominal (±0,5°C), mas múltiplos sensores compartilham o mesmo
+  barramento de 2 fios, com endereço único por sensor — reduz
+  drasticamente a fiação ao escalar, e é a opção mais compatível com o
+  ESP32 já usado nos protótipos anteriores (Aula 02).
+:::
+
+Para este experimento, em que o critério é um **delta de 2°C** (não a
+temperatura absoluta), a precisão de ±0,5°C de um sensor 1-Wire é
+suficiente, e a vantagem de escalabilidade (poucos fios para 12 ou 48
+canais) pesa mais do que a precisão extra de um termopar — essa é a
+recomendação para a seleção definitiva de componentes, numa etapa
+futura.
+
+### Frequência de leitura e registro
+
+Seguindo o que Shan et al. (2021) fizeram (leitura a cada 10 minutos),
+mas reconhecendo que o experimento atual trabalha com registro de hora
+em hora: a leitura interna do sensor pode ser frequente (a cada poucos
+minutos), enquanto o **registro/relatório** mantém a granularidade de
+hora em hora já usada no experimento — eliminando a lacuna noturna sem
+mudar a unidade de análise dos dados.
+
+### Lógica de alerta — dois níveis
+
+::: {.font-menor}
+1. **Alerta preliminar (tendência)** — ΔT ≥ 0,5°C sustentado por mais de
+   uma leitura consecutiva. **Atenção**: este valor de 0,5°C **não é um
+   critério da literatura** (na literatura, 0,5 é um critério de pH, não
+   de temperatura — ver Entrega 1). É uma escolha de engenharia deste
+   projeto, para gerar um aviso antecipado de tendência antes do
+   critério formal ser atingido. Isso deve ficar documentado como tal no
+   relatório, para não ser confundido com o critério de Taylor & Kung.
+2. **Alerta de instabilidade confirmada** — ΔT ≥ 2°C acima do ambiente.
+   Este é o critério adotado pelo protocolo do experimento (o mesmo
+   valor numérico aparece na literatura de deterioração pós-abertura,
+   Taylor & Kung, 2002, *apud* Leão et al., 2016, mas essa literatura
+   trata de um fenômeno diferente do nosso, silo fechado). Usado para
+   registrar o tempo até o aquecimento em cada tratamento.
+:::
+
+### Caminho de escalabilidade
+
+::: {.font-menor}
+1. **Protótipo (1 canal)**: 1 sensor de silagem + 1 de referência
+   ambiente, validado comparando com o termômetro manual atual;
+2. **Piloto (12 canais)**: 1 sensor por tratamento (1 repetição de cada),
+   compartilhando o(s) sensor(es) de referência ambiente;
+3. **Escala completa (48 canais)**: 1 sensor por vaso, cobrindo todas as
+   repetições — provavelmente exigindo múltiplos microcontroladores ou
+   multiplexação, a detalhar numa etapa futura;
+4. **Versão de campo**: bateria própria para até 90 dias, sem depender
+   de energia elétrica constante (ligando com os desafios de campo da
+   Aula 02).
+:::
+
+### Variáveis futuras (não prioritárias agora)
+
+- **pH**: sobe junto com a temperatura, mas com defasagem (28–48h,
+  Shan et al., 2021) — útil como confirmação numa fase posterior, não
+  como primeiro sinal;
+- **Gases (CO2, metano)**: possibilidade de uma fase futura, ainda sem
+  sensor definido.
+
+## Próximas etapas
+
+::: {.font-menor}
+- Seleção final dos componentes do protótipo de 1 canal (sensor, cabo de
+  penetração, microcontrolador, alimentação de bancada);
+- Esquema elétrico e lista de materiais do protótipo;
+- Firmware do protótipo: leitura periódica, cálculo do ΔT, registro de
+  hora em hora e lógica dos dois alertas;
+- Validação do protótipo comparando com o termômetro manual atual;
+- Plano de escalonamento para 12 e depois 48 canais.
+:::
+
+## Entrega 2
+
+**Prazo:** 23 de novembro de 2026.
+
+**Modalidade:** *(a definir)*

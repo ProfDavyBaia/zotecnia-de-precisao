@@ -1,0 +1,177 @@
+---
+title: "Projeto Aplicado — Monitoramento de Estabilidade Aeróbica de Silagem"
+subtitle: "Entrega 1 — Descrição do problema e fundamentação na literatura"
+---
+
+## Contexto do experimento
+
+O experimento avalia a estabilidade de silagens em 48 vasos, organizados
+em 12 tratamentos com 4 repetições cada, variando a proporção de capim e
+a presença ou ausência de DDG (resíduo da produção de etanol). O objetivo
+deste projeto é desenvolver, de forma gradual, um sistema de hardware e
+software que monitore o aquecimento dessas silagens automaticamente,
+substituindo a medição manual atual.
+
+**Ponto importante de protocolo:** o vaso/silo fica sempre fechado
+(vedado) durante todo o acompanhamento. Não se trata de um teste de
+exposição ao ar depois de uma abertura (o tipo de teste mais comum na
+literatura de "estabilidade aeróbica"), e sim de aquecimento espontâneo
+durante a fase de armazenamento, com o recipiente fechado.
+
+Esta entrega cobre duas partes: (1) a descrição formal do problema, e (2)
+a fundamentação desse problema na literatura científica.
+
+## 1. Descrição formal do problema
+
+### O que causa aquecimento com o silo ainda fechado
+
+Segundo Pedroso (Embrapa Pecuária Sudeste, *Princípios da Produção e
+Manejo de Silagens*), a silagem passa por fases dentro do silo fechado:
+uma fase aeróbia inicial (enquanto há oxigênio e pH elevado) e, depois
+que a condição anaeróbia é alcançada, a fase de fermentação, seguida da
+fase estável, "se o silo for corretamente vedado".
+
+O problema ocorre quando a fase aeróbia inicial se prolonga, ou quando
+há entrada contínua de oxigênio mesmo com o silo fechado. As causas
+descritas pelo autor:
+
+::: {.font-menor}
+- **Fase aeróbia prolongada**: pode "resultar no aquecimento excessivo
+  da silagem, predispondo-a a ser pouco estável após a abertura" — ou
+  seja, o aquecimento ainda fechado já é um indicador de problema futuro,
+  mesmo antes de qualquer abertura.
+- **Compactação deficiente / bolsões de ar**: camadas mal compactadas
+  "sofrerão aquecimento excessivo e imobilização da proteína".
+- **Colheita tardia ou picagem grosseira**: dificulta a compactação, "o
+  que pode resultar em aquecimento excessivo e ocorrência de mofos".
+- **Entrada de ar pela vedação**: mesmo com o silo fechado, "rachaduras
+  nas paredes do silo e furos na lona plástica permitem a entrada de ar
+  em grande quantidade".
+- **Oxigênio residual, mesmo em baixa concentração**: "na presença de
+  pequena concentração de oxigênio (menos de 1%) os microorganismos
+  aeróbios tornam-se ativos".
+:::
+
+Um único valor absoluto de temperatura aparece nessa fonte: aquecimento
+excessivo (**42 a 44°C**) pode causar reação de Maillard, reduzindo a
+digestibilidade da proteína. Esse é um limiar diferente do critério de
+2°C acima do ambiente: é um valor absoluto de dano, não um delta inicial
+de detecção precoce.
+
+### Critério adotado neste experimento, e o que ainda precisa ser verificado
+
+O critério usado no protocolo deste experimento (aumento de 2°C acima do
+ambiente; 10 a 12h para instabilizar em silagem de milho, até 7 dias em
+silagem de capim) é numericamente o mesmo usado na literatura de
+**estabilidade aeróbica pós-abertura** (ver seção 2) — mas essa literatura
+descreve um fenômeno diferente (silagem exposta ao ar depois de aberta).
+
+::: {.attribution}
+Isso não invalida o critério adotado aqui: ele pode ser um valor de
+engenharia escolhido pelo protocolo do experimento, coerente com a mesma
+ordem de grandeza observada na literatura de exposição ao ar. Mas, como
+nenhuma fonte encontrada até agora confirma esse critério especificamente
+para aquecimento com o silo fechado, isso deve ficar registrado como uma
+lacuna de literatura, não como um critério confirmado por terceiros.
+:::
+
+### Diferença de velocidade entre tipos de silagem
+
+A velocidade de aquecimento varia muito conforme o material. O protocolo
+do experimento assume 10 a 12 horas para silagem de milho e até 7 dias
+para silagem de capim. A literatura de estabilidade pós-abertura reporta
+variações na mesma ordem de grandeza (dezenas de horas a vários dias,
+dependendo de híbrido, compactação, inoculante e temperatura ambiente),
+mas, como já dito, não se sabe ainda se esses mesmos números se aplicam
+exatamente ao silo fechado. Essa variabilidade é relevante para o
+experimento de qualquer forma: tratamentos diferentes (proporção de
+capim, presença de DDG) provavelmente vão esquentar em momentos bem
+diferentes entre si.
+
+### O problema do monitoramento manual
+
+A medição atual é feita manualmente, de hora em hora, com termômetro de
+penetração, sem abrir totalmente o vaso. Isso gera dois problemas:
+
+1. **Lacuna noturna**: é operacionalmente inviável medir de hora em hora
+   durante a madrugada. Como o aumento de temperatura pode começar a
+   qualquer momento (inclusive de madrugada), picos de temperatura que
+   ocorrem nesse período não são registrados.
+2. **Subestimação do aquecimento**: como consequência direta do item
+   anterior, o momento real em que o aquecimento começa tende a ser
+   detectado tarde, subestimando o quão rápido o processo de fato
+   começou.
+
+Esse é, essencialmente, o mesmo problema de **coleta automatizada vs.
+manual** discutido na Aula 01: a coleta manual tem baixo custo inicial,
+mas frequência limitada e lacunas; a automatizada resolve isso ao custo
+de um investimento inicial em sensores e sistema embarcado (Aula 02).
+
+### Detalhe do protocolo: medição com o vaso sempre fechado
+
+A temperatura é sempre medida com o vaso fechado. O termômetro de
+penetração é inserido sem abrir totalmente o recipiente, preservando a
+condição de fechamento durante toda a medição. Isso importa para o
+projeto de automação: qualquer sensor precisa medir através de uma
+abertura fixa e selada, sem exigir que o vaso seja aberto a cada leitura
+(ver Entrega 2).
+
+## 2. Fundamentação na literatura
+
+Duas literaturas diferentes precisam ser distinguidas aqui.
+
+::: {.font-menor}
+| Fenômeno | Critério | Fonte |
+|----------|----------|-------|
+| Deterioração aeróbia **pós-abertura** | Temperatura da silagem excede a do ambiente em **2°C** | Taylor & Kung (2002), *apud* Leão et al. (2016) |
+| Instabilidade por pH (complementar, pós-abertura) | pH aumenta **0,5 unidade** acima do valor inicial, em até 5 dias | Weinberg et al. (2008), *apud* Leão et al. (2016) e Shan et al. (2021) |
+| Aquecimento durante a fase de armazenamento, **silo fechado** | Sem critério numérico de delta encontrado; único valor absoluto: 42 a 44°C (risco de reação de Maillard) | Pedroso (Embrapa, *Princípios da Produção e Manejo de Silagens*) |
+:::
+
+Tudo o que já havia sido levantado sobre a literatura de **pós-abertura**
+continua válido como pano de fundo, mas deve ser lido com essa ressalva:
+
+O critério dos 2°C é descrito por Shan et al. (2021) como "amplamente
+aceito" (*widely accepted*) para deterioração pós-abertura, embora a
+própria literatura reporte variações entre estudos, de 1,7°C a 3°C acima
+do ambiente, dependendo do autor.
+
+::: {.attribution}
+Leão, G.F.M. et al. (2016) usaram exatamente esse critério (2°C acima do
+ambiente; pH +0,5 em até 5 dias) para silagens já abertas, e mediram
+temperatura e pH apenas **três vezes por dia (6h, 12h e 18h)** — ou seja,
+o próprio artigo ilustra, na prática, a mesma lacuna noturna (18h às 6h,
+12 horas sem leitura) que motiva este projeto, mesmo tratando de um
+fenômeno diferente do nosso.
+:::
+
+Um achado relevante vem de Shan et al. (2021): monitorando temperatura e
+pH continuamente (a cada 10 minutos) em silagem de milho já aberta, a
+temperatura **antecede** o aumento de pH por **28 a 48 horas**. Mesmo
+sendo sobre o fenômeno pós-abertura, esse achado é um argumento geral a
+favor de priorizar temperatura sobre pH como primeira variável a
+automatizar, já que a temperatura tende a responder mais rápido a
+mudanças microbiológicas de qualquer tipo.
+
+::: {.attribution}
+Referências completas:
+Shan, G.; Buescher, W.; Maack, C.; Lipski, A.; Acir, I-H.; Trimborn, M.;
+Kuellmer, F.; Wang, Y.; Grantz, D.A.; Sun, Y. (2021). Dual sensor
+measurement shows that temperature outperforms pH as an early sign of
+aerobic deterioration in maize silage. *Scientific Reports*, 11, 8686.
+https://doi.org/10.1038/s41598-021-88082-1 ·
+Leão, G.F.M.; Jobim, C.C.; Neumann, M.; Bueno, A.V.I.; Ribeiro, M.G.;
+Jacovaci, F.A.; Horst, E.H.; Silva, M.R.H.; Askel, E.J. (2016).
+Parâmetros nutricionais e estabilidade aeróbia de silagens de cereais de
+inverno submetidas a diferentes regimes de corte no estádio vegetativo.
+*Arquivo Brasileiro de Medicina Veterinária e Zootecnia*, 68(6),
+1664–1672. https://doi.org/10.1590/1678-4162-9082 ·
+Pedroso, A.F. *Princípios da Produção e Manejo de Silagens*. Embrapa
+Pecuária Sudeste.
+:::
+
+## Entrega 1
+
+**Prazo:** 16 de novembro de 2026.
+
+**Modalidade:** *(a definir)*

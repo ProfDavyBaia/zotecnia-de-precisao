@@ -4,6 +4,7 @@ project:
     - "*.qmd"
     - "aulas/**/*.qmd"
     - "avaliacoes/**/*.qmd"
+    - "projetos/**/*.qmd"
 
 # engine jupyter: necessário porque a disciplina usa blocos ```{python}```
 # (dados e gráficos)
@@ -25,6 +26,8 @@ website:
         #text: Cronograma
       - href: index.qmd#avaliacao
         text: Avaliação
+      - href: index.qmd#projeto
+        text: Projeto Aplicado
       - href: index.qmd#bibliografia
         text: Bibliografia
     right:

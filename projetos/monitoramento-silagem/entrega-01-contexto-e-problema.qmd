@@ -1,0 +1,65 @@
+---
+title: "Projeto Aplicado — Monitoramento de Estabilidade de Silagem"
+subtitle: "Entrega 1: contexto do experimento e descrição do problema"
+---
+
+## Contexto do experimento
+
+O experimento avalia o aquecimento da silagem durante o armazenamento,
+com o vaso/silo sempre fechado. Não é um teste de exposição ao
+ar depois de uma abertura: a temperatura é medida com o recipiente
+fechado, do início ao fim do acompanhamento.
+
+::: {.font-menor}
+- Critério de deterioração adotado neste experimento: aumento de 2°C
+  acima da temperatura ambiente.
+  - Abaixo disso, a silagem ainda é considerada estável.
+  - Acima disso, há deterioração em curso, mesmo sem odor perceptível.
+- A velocidade de aquecimento varia muito por tipo de silagem:
+  - Silagem de milho: instabilidade em 10 a 12 horas.
+  - Silagem de capim: pode levar até 7 dias para aquecer.
+- Experimento atual: 48 vasos, 12 tratamentos, 4 repetições cada.
+  Variações incluem proporções de capim e presença/ausência de DDG
+  (resíduo da produção de etanol).
+:::
+
+## Problema de monitoramento atual
+
+::: {.font-menor}
+- Medição feita manualmente, de hora em hora, com termômetro de
+  penetração.
+- Dados perdidos à noite: a temperatura pode disparar de madrugada e
+  ninguém registra.
+- Consequência: subestimação dos valores reais de instabilidade.
+:::
+
+## O que fazer nesta entrega
+
+::: {.font-menor}
+1. **Descrever formalmente o problema** de monitoramento de temperatura
+   da silagem, com base no contexto acima (critério dos 2°C, frequência
+   horária de medição e risco de perda de dados noturnos).
+2. **Buscar referências na literatura**, em português e em inglês, sobre
+   o aquecimento da silagem durante a fase de armazenamento, com o silo
+   fechado (oxigênio residual, compactação, duração da fase aeróbia
+   inicial antes da anaerobiose se estabelecer). Atenção: boa parte da
+   literatura sobre "estabilidade aeróbica" (incluindo o critério dos
+   2°C) trata do período depois que o silo é aberto, o que é diferente
+   do que está sendo medido aqui. Usem essas fontes com cuidado,
+   discutindo explicitamente se os mesmos critérios se aplicam ao silo
+   ainda fechado, e citem as fontes encontradas.
+3. Com base no problema descrito e nas referências levantadas, esbocem
+   em linhas gerais a **solução proposta**: um sistema de monitoramento
+   automatizado, com sensor de temperatura contínuo nos vasos
+   (eliminando erros manuais e lacunas noturnas), alerta automático ao
+   atingir a variação de 2°C (considerem também se vale a pena um sinal
+   precoce, por exemplo a 0,5°C, e justifiquem essa escolha), pensado
+   inicialmente para 12 pontos de medição e escalável para as 48
+   repetições.
+:::
+
+## Entrega 1
+
+**Prazo:** 16 de novembro de 2026.
+
+**Modalidade:** *(a definir)*

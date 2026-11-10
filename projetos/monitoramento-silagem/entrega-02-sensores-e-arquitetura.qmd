@@ -1,0 +1,48 @@
+---
+title: "Projeto Aplicado — Monitoramento de Estabilidade Aeróbica de Silagem"
+subtitle: "Entrega 2: sensores, arquitetura e lógica de alertas"
+---
+
+## Continuação
+
+Esta entrega parte do problema descrito e das referências levantadas na
+[Entrega 1](entrega-01-contexto-e-problema.qmd).
+
+## Sensores e variáveis a coletar
+
+::: {.font-menor}
+- **Temperatura**: prioridade no primeiro momento, com medição de hora
+  em hora.
+- **pH**: sobe junto com a temperatura, à medida que as bactérias vencem
+  a acidez.
+  - Silagem estável: pH entre 3,5 e 3,8.
+  - Deterioração avançada: pH próximo de 6 a 7.
+- **Gases (CO2, metano)**: possibilidade futura, não prioritária agora.
+:::
+
+## O que fazer nesta entrega
+
+::: {.font-menor}
+1. **Definir a arquitetura de sensores e a lógica de alertas** do
+   sistema, usando como base o critério dos 2°C, a frequência horária de
+   medição e o risco de perda de dados noturnos vistos na Entrega 1.
+2. **Descrever os componentes de hardware**, usando controladores
+   comuns disponíveis no mercado (ESP32 ou Raspberry Pi), com sensor de
+   temperatura e sensor de pH como módulos **separados**. Priorizem o
+   sensor de temperatura nesta primeira versão; o sensor de pH pode ser
+   descrito como uma extensão futura do sistema.
+3. **Justifiquem as escolhas** (tipo de sensor, controlador, frequência
+   de leitura, lógica de alerta) com base no problema e nas referências
+   levantadas na Entrega 1.
+:::
+
+## Entrega 2
+
+- **Prazo:** 23 de novembro de 2026, até às 23:59.
+- **Modalidade:** entrega via e-mail — [davy.baia@ceca.ufal.br](mailto:davy.baia@ceca.ufal.br)
+- **Assunto:** [2026.2.ZP] - Trabalho 03
+- **Corpo do e-mail:** nomes dos integrantes em ordem alfabética
+- **Anexo:** Relatório das Entregas 1 e 2 em pdf.
+- **Apresentação:** obrigatória, no dia 24 de novembro de 2026, compondo
+  a nota desta entrega.
+

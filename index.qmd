@@ -102,6 +102,30 @@ sensores/IoT.
 
 <!-- Peso de cada avaliação na composição final da nota: a definir -->
 
+## Projeto Aplicado {#projeto}
+
+Projeto conduzido de forma gradual ao longo do semestre: criação de um
+sistema real de hardware e software para um experimento de estabilidade
+de silagem, aplicando o conteúdo das aulas a cada nova etapa.
+
+:::{.aula-card}
+<div class="numero">01</div>
+<div>
+<strong>Monitoramento de Estabilidade Aeróbica de Silagem</strong>
+
+Trabalho em grupo, dividido em duas entregas: descrição do problema com
+base na literatura, e definição de arquitetura de sensores (ESP32 ou
+Raspberry Pi) e lógica de alertas.
+
+<span class="links">
+[Entrega 1](projetos/monitoramento-silagem/entrega-01-contexto-e-problema.qmd) (16/11) ·
+[Entrega 2](projetos/monitoramento-silagem/entrega-02-sensores-e-arquitetura.qmd) (23/11)
+</span>
+</div>
+:::
+
+<!-- Próximas etapas: seleção de componentes, firmware, validação, escalonamento -->
+
 ## Bibliografia {#bibliografia}
 
 **Básica**
